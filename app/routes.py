@@ -37,13 +37,30 @@ def get_all_planets():
 
 @planets_bp.route("/<input_planet>", methods=["GET"])
 def get_one_planet(input_planet):
-
     for planet in planets:
-        if str(planet.id) == input_planet or planet.name == input_planet:
-            return {
+        if str(planet.id) == input_planet or planet.name.lower() == input_planet.lower():
+            return jsonify({
                 "id": planet.id,
                 "name": planet.name,
                 "description": planet.description,
                 "size": planet.size
-            }
-    return {"message": f"Planet {planet} not found."}, 404
+            }), 200
+    return jsonify({"message": f"Planet {input_planet} not found."}), 404
+
+#there is a second version to practice 400 code
+@planets_bp.route("/<id_planet>", methods=["GET"])
+def get_one_planet_by_id(id_planet):
+    try:
+        id_planet = int(id_planet)
+    except ValueError:
+        rsp={"message": f"Invalid id: {id_planet}"}
+        return jsonify(rsp), 400
+    for planet in planets:
+        if planet.id == id_planet:
+            return jsonify({
+                "id": planet.id,
+                "name": planet.name,
+                "description": planet.description,
+                "size": planet.size
+            }), 200
+    return jsonify({"message": f"Planet {id_planet} not found."}), 404
