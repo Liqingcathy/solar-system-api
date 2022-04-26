@@ -35,8 +35,13 @@ def get_all_planets():
         
     return jsonify(res)
 
+
 @planets_bp.route("/<input_planet>", methods=["GET"])
 def get_one_planet(input_planet):
+    """ 
+       handles all erros wihtout explicitly define 400 message.
+       input examples: /planets/1, /planets/earth, /planets/one ...
+    """
     for planet in planets:
         if str(planet.id) == input_planet or planet.name.lower() == input_planet.lower():
             return jsonify({
@@ -47,9 +52,14 @@ def get_one_planet(input_planet):
             }), 200
     return jsonify({"message": f"Planet {input_planet} not found."}), 404
 
-#there is a second version to practice 400 code
-@planets_bp.route("/<id_planet>", methods=["GET"])
+
+#@planets_bp.route("/<id_planet>", methods=["GET"])
 def get_one_planet_by_id(id_planet):
+    """
+    Above function handles all errors like 404, 400, etc. 
+    Below function is for practicing seperate 400, 404, 200 error handlings. 
+    Our program doesn't trige the below funciton at all.
+    """
     try:
         id_planet = int(id_planet)
     except ValueError:
