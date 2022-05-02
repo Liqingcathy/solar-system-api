@@ -7,7 +7,7 @@ planets_bp = Blueprint("planets_bp", __name__, url_prefix="/planets")
 
 @planets_bp.route("about", methods=["GET", "POST"])
 def about():
-    return "about"
+    return "The Solar System Project by: Nina, Lin and Liqing. Ada Developers Academy, 2022"
 
 def validate_planet(planet_id):
     try:
