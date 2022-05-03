@@ -5,7 +5,7 @@ from app.models.planet import Planet
 
 planets_bp = Blueprint("planets_bp", __name__, url_prefix="/planets")
 
-@planets_bp.route("about", methods=["GET", "POST"])
+@planets_bp.route("about", methods=["GET"])
 def about():
     return "The Solar System Project by: Nina, Lin and Liqing. Ada Developers Academy, 2022"
 
