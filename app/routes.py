@@ -26,7 +26,7 @@ def validate_planet(planet_id):
 @planets_bp.route("", methods=["POST"])
 def create_planet():
     request_body = request.get_json()
-    new_planet = Planet(order_from_sun=request_body["order_from_sun"] , name = request_body["name"], desc = request_body["desc"], size = request_body["size"])
+    new_planet = Planet(order_from_sun=request_body["order from sun"] , name = request_body["name"], desc = request_body["description"], size = request_body["size"])
         
     db.session.add(new_planet)
     db.session.commit()
@@ -45,6 +45,7 @@ def get_all_planets():
     for planet in planets:
         res.append({
             "id": planet.id,
+            "order from sun":planet.order_from_sun,
             "name": planet.name,
             "description": planet.desc,
             "size": planet.size
@@ -75,30 +76,32 @@ def get_one_planet_by_id(id_planet):
     planet=validate_planet(id_planet)
     return {
         "id": planet.id,
+        "order from sun":planet.order_from_sun,
         "name": planet.name,
         "description": planet.desc,
         "size": planet.size
         }
     
 @planets_bp.route("/<id_planet>", methods=["PUT"])
-def update_book(id_planet):
+def update_planet(id_planet):
     planet = validate_planet(id_planet)
 
     request_body = request.get_json()
 
-    planet.title = request_body["title"]
+    planet.order_from_sun = request_body["order from sun"]
+    planet.name = request_body["name"]
     planet.desc = request_body["description"]
     planet.size = request_body["size"]
 
     db.session.commit()
 
-    return make_response(f"Book #{planet.id} successfully updated")
+    return make_response(f"Planet #{planet.id} successfully updated")
 
 @planets_bp.route("/<id_planet>", methods=["DELETE"])
-def delete_book(id_planet):
+def delete_planet(id_planet):
     planet = validate_planet(id_planet)
 
     db.session.delete(planet)
     db.session.commit()
 
-    return make_response(f"Book #{planet.id} successfully deleted")
+    return make_response(f"Planet #{planet.id} successfully deleted")
