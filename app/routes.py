@@ -1,4 +1,3 @@
-from os import abort
 from flask import Blueprint, jsonify, abort, make_response, request
 from app import db
 from app.models.planet import Planet
