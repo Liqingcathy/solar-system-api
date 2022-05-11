@@ -1,9 +1,9 @@
 order_from_sun, name, desc, size
-1,1, "Mercury", "The smallest planet in our solar system and cloest to the Sun", 4780
-2,2, "Venus", "The second planet from the Sun and is Earth’s closest planetary neighbor.", 12104
-3,3, "Earth", "The only place we know of so far that’s inhabited by living things." , 12756
-4, 4, "Mars", "A dusty cold desert world with a very thin atmosphere",6780
-5, 5, "Jupiter", "Twice as massive than the other planets of our solar system combined.", 139822
-6, 6, "Saturn", "Adorned with a dazzling complex system of icy rings.",116464
-7, 7, "Uranus", "An ice giant the only planet that spins on its side.", 50724
-8, 8, "Neptune", "The eighth and farthest-known Solar planet from the Sun", 49248
+1,1,"Mercury", "The smallest planet in our solar system and cloest to the Sun", 4780
+2,2,"Venus", "The second planet from the Sun and is Earth’s closest planetary neighbor.", 12104
+3,3,"Earth", "The only place we know of so far that’s inhabited by living things." , 12756
+4, 4,"Mars", "A dusty cold desert world with a very thin atmosphere",6780
+5, 5,"Jupiter", "Twice as massive than the other planets of our solar system combined.", 139822
+6, 6,"Saturn", "Adorned with a dazzling complex system of icy rings.",116464
+7, 7,"Uranus", "An ice giant the only planet that spins on its side.", 50724
+8, 8,"Neptune", "The eighth and farthest-known Solar planet from the Sun", 49248
